@@ -1,9 +1,21 @@
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/craft/Layout";
-import { experiences, images } from "@/data/experiences";
-import { ArrowRight } from "lucide-react";
+import { experiences, images, cityCultures } from "@/data/experiences";
+import { ArrowRight, MapPin } from "lucide-react";
+import { useLocation as useAppLocation } from "@/context/LocationContext";
+import { SearchBar } from "@/components/craft/SearchBar";
+import { LocationPicker } from "@/components/craft/LocationPicker";
+import { useMemo } from "react";
 
 const Index = () => {
+  const { city, source } = useAppLocation();
+
+  const nearby = useMemo(() => experiences.filter((e) => e.city === city), [city]);
+  const popular = useMemo(() => {
+    const list = nearby.length ? nearby : experiences;
+    return list.slice(0, 3);
+  }, [nearby]);
+  const weekend = useMemo(() => experiences.filter((e) => e.tags?.includes("Weekend")).slice(0, 4), []);
   const featured = experiences.slice(0, 3);
 
   return (
@@ -24,20 +36,65 @@ const Index = () => {
             Experience India<br />
             <em className="font-light">through its</em> artisans.
           </h1>
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-8 mt-10 reveal-up">
+          <div className="flex flex-col gap-8 mt-10 reveal-up">
             <p className="text-background/85 max-w-md text-base leading-relaxed">
               Three quiet hours at the wheel, the lathe, the loom — with the
               hands that have kept India's crafts alive for generations.
             </p>
-            <Link
-              to="/experiences"
-              className="inline-flex items-center gap-3 text-background border-b border-background/40 pb-2 hover:border-clay hover:text-clay transition-colors w-fit"
-            >
-              <span className="tracking-widest text-xs uppercase">Browse Experiences</span>
-              <ArrowRight size={16} />
-            </Link>
+            <div className="max-w-2xl w-full">
+              <SearchBar variant="hero" />
+            </div>
           </div>
         </div>
+      </section>
+
+      {/* NEAR YOU */}
+      <section className="container pt-20 md:pt-28">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+          <div>
+            <p className="eyebrow mb-3 flex items-center gap-2">
+              <MapPin size={11} /> {source === "auto" ? "Auto-detected" : source === "manual" ? "Your city" : "Suggested"}
+            </p>
+            <h2 className="font-display text-4xl md:text-6xl leading-[1.05]">
+              Experiences near <em className="font-light">{city}.</em>
+            </h2>
+            <p className="mt-3 text-ink-soft text-sm">
+              {nearby.length > 0 ? `${nearby.length} workshops a short ride away.` : `No workshops in ${city} yet — try a nearby city.`}
+            </p>
+          </div>
+          <div className="flex items-center gap-4">
+            <LocationPicker />
+            <Link to="/experiences" className="text-sm text-ink-soft hover:text-clay border-b border-border pb-1">View all →</Link>
+          </div>
+        </div>
+
+        {nearby.length > 0 ? (
+          <div className="grid md:grid-cols-3 gap-x-6 gap-y-12">
+            {nearby.slice(0, 3).map((e, i) => (
+              <Link to={`/experience/${e.slug}`} key={e.slug} className={`group ${i === 1 ? "md:mt-12" : ""}`}>
+                <div className="overflow-hidden mb-4 aspect-[4/5]">
+                  <img src={e.image} alt={e.title} className="w-full h-full object-cover img-warm transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+                </div>
+                <div className="flex flex-wrap gap-1.5 mb-2">
+                  {e.tags?.slice(0, 2).map((t) => (
+                    <span key={t} className="text-[0.6rem] uppercase tracking-widest px-2 py-0.5 bg-sand text-ink-soft">{t}</span>
+                  ))}
+                </div>
+                <h3 className="font-display text-2xl md:text-3xl group-hover:text-clay transition-colors">{e.title}</h3>
+                <div className="flex justify-between items-baseline mt-3 text-sm text-ink-soft">
+                  <span>{e.duration}</span>
+                  <span className="font-medium text-ink">₹{e.price.toLocaleString("en-IN")}</span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        ) : (
+          <div className="bg-sand/50 p-10 text-center">
+            <p className="font-display text-2xl text-ink mb-3">Nothing in {city} yet.</p>
+            <p className="text-sm text-ink-soft mb-5">Browse other cities — there's likely one nearby.</p>
+            <Link to="/experiences" className="text-sm bg-ink text-background px-5 py-3 inline-block hover:bg-clay">Explore all cities</Link>
+          </div>
+        )}
       </section>
 
       {/* INTRO STRIP */}
@@ -48,6 +105,37 @@ const Index = () => {
             We don't sell tours. We sit beside an artisan, a kettle of tea between us,
             and let the work speak. <span className="text-ink-whisper">Three hours. One craft. A small piece of India to take home.</span>
           </p>
+        </div>
+      </section>
+
+      {/* EXPLORE BY CULTURE */}
+      <section className="bg-sand">
+        <div className="container py-24 md:py-32">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+            <div>
+              <p className="eyebrow mb-3">Explore by City Culture</p>
+              <h2 className="font-display text-4xl md:text-6xl leading-[1.05]">
+                Each city, <em className="font-light">a different hand.</em>
+              </h2>
+            </div>
+            <p className="text-ink-soft text-sm max-w-sm">
+              From Goan distilleries to Delhi's textile lanes, every city carries its own craft. Choose where to wander.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+            {cityCultures.map((c, i) => (
+              <Link key={c.city} to={`/experiences?city=${encodeURIComponent(c.city)}`} className={`group relative aspect-[4/5] overflow-hidden hover-lift ${i % 3 === 1 ? "lg:mt-10" : ""}`}>
+                <img src={c.image} alt={c.city} className="w-full h-full object-cover img-warm transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+                <div className="absolute inset-0 bg-gradient-veil" />
+                <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6">
+                  <p className="eyebrow text-sand mb-1">{c.signature.slice(0, 2).join(" · ")}</p>
+                  <h3 className="font-display text-background text-3xl md:text-4xl">{c.city}</h3>
+                  <p className="text-background/80 text-xs mt-1.5 hidden md:block">{c.tagline}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
