@@ -10,7 +10,7 @@ export const images = { potteryImg, woodenImg, crochetImg, potCollection, artisa
 export type Experience = {
   slug: string;
   title: string;
-  category: "Pottery" | "Wooden Toys" | "Crochet";
+  category: "Pottery" | "Wooden Toys" | "Crochet" | "Distillery" | "Textile" | "Handicrafts";
   city: string;
   duration: string;
   price: number;
@@ -21,6 +21,7 @@ export type Experience = {
   story: string;
   learn: string[];
   slots: string[];
+  tags?: ("Traditional" | "Modern" | "Cultural" | "Hands-on" | "Weekend")[];
 };
 
 export const experiences: Experience[] = [
@@ -43,6 +44,7 @@ export const experiences: Experience[] = [
       "The quiet philosophy of imperfection in craft",
     ],
     slots: ["07:00 — 10:00", "11:00 — 14:00", "15:30 — 18:30"],
+    tags: ["Traditional", "Hands-on", "Cultural"],
   },
   {
     slug: "channapatna-wooden-toys",
@@ -63,6 +65,7 @@ export const experiences: Experience[] = [
       "The history of a craft once protected by kings",
     ],
     slots: ["09:00 — 12:00", "14:00 — 17:00"],
+    tags: ["Traditional", "Hands-on", "Weekend"],
   },
   {
     slug: "crochet-an-heirloom",
@@ -83,6 +86,7 @@ export const experiences: Experience[] = [
       "Finishing your piece — a coaster or small pouch",
     ],
     slots: ["10:00 — 13:00", "15:00 — 18:00"],
+    tags: ["Modern", "Hands-on", "Weekend"],
   },
   {
     slug: "blue-pottery-of-jaipur",
@@ -103,6 +107,7 @@ export const experiences: Experience[] = [
       "Glazing and the kiln tradition",
     ],
     slots: ["08:00 — 11:00", "13:00 — 16:00"],
+    tags: ["Cultural", "Traditional", "Hands-on"],
   },
   {
     slug: "etikoppaka-toys",
@@ -123,6 +128,7 @@ export const experiences: Experience[] = [
       "The ecology behind a 400-year-old craft",
     ],
     slots: ["09:00 — 12:00", "14:30 — 17:30"],
+    tags: ["Traditional", "Cultural"],
   },
   {
     slug: "kashmiri-crochet-shawl",
@@ -143,8 +149,135 @@ export const experiences: Experience[] = [
       "Finishing a small motif of your own",
     ],
     slots: ["10:00 — 13:00", "14:00 — 17:00"],
+    tags: ["Traditional", "Cultural", "Hands-on"],
   },
 ];
 
-export const cities = ["Jaipur", "Bengaluru", "Pondicherry", "Visakhapatnam", "Srinagar", "Udaipur"];
-export const categories = ["Pottery", "Wooden Toys", "Crochet"] as const;
+export const experiencesExtra: Experience[] = [
+  {
+    slug: "goa-feni-distillery",
+    title: "Cashew Feni Distillery Walk",
+    category: "Distillery",
+    city: "Goa",
+    duration: "3 hours",
+    price: 2400,
+    image: potCollection,
+    artisan: "Joaquim Fernandes",
+    artisanYears: 31,
+    excerpt: "Walk a hillside distillery in old Goa. Crush, ferment, and taste the country's only heritage spirit.",
+    story: "Joaquim's family has distilled feni from cashew apples for four generations. The copper pots, he says, remember every monsoon.",
+    learn: [
+      "The harvest and pressing of cashew apples",
+      "Triple-distillation in earthen and copper pots",
+      "Tasting notes across single, double, and aged feni",
+      "The Indo-Portuguese roots of Goan distilling",
+    ],
+    slots: ["10:00 — 13:00", "15:00 — 18:00"],
+    tags: ["Cultural", "Modern", "Weekend"],
+  },
+  {
+    slug: "goa-craft-brew",
+    title: "Coastal Craft Brew Workshop",
+    category: "Distillery",
+    city: "Goa",
+    duration: "3 hours",
+    price: 2200,
+    image: clayTexture,
+    artisan: "Anya D'Souza",
+    artisanYears: 9,
+    excerpt: "A small Panjim brewery opens its mash tun. Brew a bottle of beer flavoured with kokum and curry leaf.",
+    story: "Anya left a corporate desk to brew along the Mandovi. She blends Belgian technique with Goan botanicals.",
+    learn: [
+      "Mashing, sparging, and the brewer's clock",
+      "Choosing hops and local botanicals",
+      "Bottling your own labelled brew to take home",
+      "The new wave of Indian craft beer",
+    ],
+    slots: ["11:00 — 14:00", "16:00 — 19:00"],
+    tags: ["Modern", "Hands-on", "Weekend"],
+  },
+  {
+    slug: "delhi-handblock-textile",
+    title: "Hand-block Printed Textile",
+    category: "Textile",
+    city: "Delhi",
+    duration: "3 hours",
+    price: 1900,
+    image: crochetImg,
+    artisan: "Iqbal Khatri",
+    artisanYears: 36,
+    excerpt: "In a Shahpur Jat lane, carve a wooden block and print a scarf in indigo and madder.",
+    story: "Iqbal carries the bagru tradition into Delhi's quiet courtyards. He prints, he says, the way his grandfather sang — without rushing.",
+    learn: [
+      "Reading and carving a small wooden block",
+      "Mixing natural indigo and madder",
+      "Registering and printing a length of cotton",
+      "The textile geography of north India",
+    ],
+    slots: ["10:00 — 13:00", "14:30 — 17:30"],
+    tags: ["Traditional", "Cultural", "Hands-on"],
+  },
+  {
+    slug: "delhi-crochet-circle",
+    title: "Old Delhi Crochet Circle",
+    category: "Crochet",
+    city: "Delhi",
+    duration: "3 hours",
+    price: 1500,
+    image: crochetImg,
+    artisan: "Razia Begum",
+    artisanYears: 27,
+    excerpt: "A haveli rooftop, Chandni Chowk below. Crochet with the women's circle that meets here every Sunday.",
+    story: "Razia's circle has met for twelve years. They teach, gossip, and stitch — in roughly that order.",
+    learn: [
+      "The basic stitches taught at the circle",
+      "Reading a small motif from end to end",
+      "Finishing a coaster or pouch you'll keep",
+      "The unwritten history of Delhi's craft circles",
+    ],
+    slots: ["10:00 — 13:00", "15:00 — 18:00"],
+    tags: ["Modern", "Cultural", "Weekend"],
+  },
+  {
+    slug: "jaipur-wooden-puppet",
+    title: "Kathputli Puppet Carving",
+    category: "Wooden Toys",
+    city: "Jaipur",
+    duration: "3 hours",
+    price: 1700,
+    image: woodenImg,
+    artisan: "Bhanwar Bhat",
+    artisanYears: 44,
+    excerpt: "Carve and paint a small Rajasthani string puppet — a craft kept alive by a single colony in Jaipur.",
+    story: "Bhanwar's family has carved kathputli for seven generations. Each puppet, he says, learns its dance from the carver's hands.",
+    learn: [
+      "Carving a small puppet head from mango wood",
+      "Painting the bold kathputli features",
+      "Stringing for movement and balance",
+      "The folk theatre tradition of Rajasthan",
+    ],
+    slots: ["09:00 — 12:00", "14:00 — 17:00"],
+    tags: ["Traditional", "Cultural", "Hands-on"],
+  },
+];
+
+experiences.push(...experiencesExtra);
+
+export const cities = ["Jaipur", "Bengaluru", "Pondicherry", "Visakhapatnam", "Srinagar", "Udaipur", "Goa", "Delhi"];
+export const categories = ["Pottery", "Wooden Toys", "Crochet", "Distillery", "Textile", "Handicrafts"] as const;
+
+export type CityCulture = {
+  city: string;
+  tagline: string;
+  signature: string[];
+  image: string;
+};
+
+export const cityCultures: CityCulture[] = [
+  { city: "Jaipur", tagline: "The pink city of clay & cobalt", signature: ["Pottery", "Blue Pottery", "Wooden Toys"], image: potteryImg },
+  { city: "Goa", tagline: "Coastal stills & craft brews", signature: ["Feni Distillery", "Craft Beer"], image: potCollection },
+  { city: "Delhi", tagline: "Lanes of textile & handicraft", signature: ["Handblock Print", "Crochet"], image: crochetImg },
+  { city: "Bengaluru", tagline: "Lacquer & lathe traditions", signature: ["Channapatna Toys"], image: woodenImg },
+  { city: "Srinagar", tagline: "Walnut wood & chinar wool", signature: ["Kashmiri Crochet"], image: crochetImg },
+  { city: "Pondicherry", tagline: "Slow afternoons by the sea", signature: ["Crochet"], image: crochetImg },
+];
