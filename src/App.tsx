@@ -11,6 +11,7 @@ import Artisans from "./pages/Artisans";
 import Story from "./pages/Story";
 import Bookings from "./pages/Bookings";
 import Login from "./pages/Login";
+import WelcomeLocation from "./pages/WelcomeLocation";
 import ArtisanPortal from "./pages/ArtisanPortal";
 import NotFound from "./pages/NotFound";
 import { LocationProvider } from "./context/LocationContext";
@@ -35,6 +36,7 @@ const App = () => (
           <Route path="/story" element={<Story />} />
           <Route path="/bookings" element={<Bookings />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/welcome-location" element={<WelcomeLocation />} />
           <Route path="/artisan-portal" element={<ArtisanPortal />} />
           <Route path="*" element={<NotFound />} />
           </Routes>
