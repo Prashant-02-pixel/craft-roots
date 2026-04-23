@@ -10,7 +10,7 @@ export const images = { potteryImg, woodenImg, crochetImg, potCollection, artisa
 export type Experience = {
   slug: string;
   title: string;
-  category: "Pottery" | "Wooden Toys" | "Crochet";
+  category: "Pottery" | "Wooden Toys" | "Crochet" | "Distillery" | "Textile" | "Handicrafts";
   city: string;
   duration: string;
   price: number;
@@ -21,6 +21,7 @@ export type Experience = {
   story: string;
   learn: string[];
   slots: string[];
+  tags?: ("Traditional" | "Modern" | "Cultural" | "Hands-on" | "Weekend")[];
 };
 
 export const experiences: Experience[] = [
