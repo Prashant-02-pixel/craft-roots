@@ -19,6 +19,25 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        clay: {
+          DEFAULT: "hsl(var(--clay))",
+          foreground: "hsl(var(--clay-foreground))",
+          soft: "hsl(var(--clay-soft))",
+        },
+        sand: {
+          DEFAULT: "hsl(var(--sand))",
+          foreground: "hsl(var(--sand-foreground))",
+          deep: "hsl(var(--sand-deep))",
+        },
+        moss: {
+          DEFAULT: "hsl(var(--moss))",
+          foreground: "hsl(var(--moss-foreground))",
+        },
+        ink: {
+          DEFAULT: "hsl(var(--ink))",
+          soft: "hsl(var(--ink-soft))",
+          whisper: "hsl(var(--whisper))",
+        },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -62,6 +81,19 @@ export default {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      fontFamily: {
+        display: ["'Cormorant Garamond'", "Georgia", "serif"],
+        sans: ["Inter", "system-ui", "sans-serif"],
+      },
+      boxShadow: {
+        soft: "var(--shadow-soft)",
+        lift: "var(--shadow-lift)",
+      },
+      backgroundImage: {
+        'gradient-warm': "var(--gradient-warm)",
+        'gradient-clay': "var(--gradient-clay)",
+        'gradient-veil': "var(--gradient-veil)",
       },
       keyframes: {
         "accordion-down": {
