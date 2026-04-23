@@ -13,6 +13,8 @@ import Bookings from "./pages/Bookings";
 import Login from "./pages/Login";
 import ArtisanPortal from "./pages/ArtisanPortal";
 import NotFound from "./pages/NotFound";
+import { LocationProvider } from "./context/LocationContext";
+import { LocationPrompt } from "./components/craft/LocationPrompt";
 
 const queryClient = new QueryClient();
 
@@ -22,7 +24,9 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <Routes>
+        <LocationProvider>
+          <LocationPrompt />
+          <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/experiences" element={<Experiences />} />
           <Route path="/experience/:slug" element={<ExperienceDetail />} />
@@ -33,7 +37,8 @@ const App = () => (
           <Route path="/login" element={<Login />} />
           <Route path="/artisan-portal" element={<ArtisanPortal />} />
           <Route path="*" element={<NotFound />} />
-        </Routes>
+          </Routes>
+        </LocationProvider>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
