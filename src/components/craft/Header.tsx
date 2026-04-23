@@ -1,6 +1,8 @@
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { LocationPicker } from "./LocationPicker";
+import { SearchBar } from "./SearchBar";
 
 export const Header = () => {
   const [open, setOpen] = useState(false);
@@ -29,14 +31,22 @@ export const Header = () => {
         scrolled ? "bg-background/85 backdrop-blur-md border-b border-border/60" : "bg-transparent"
       }`}
     >
-      <div className="container flex items-center justify-between h-16 md:h-20">
-        <Link to="/" className="flex items-baseline gap-2 group">
+      <div className="container flex items-center gap-6 h-16 md:h-20">
+        <Link to="/" className="flex items-baseline gap-2 group shrink-0">
           <span className="font-display text-2xl md:text-[1.6rem] tracking-tight">CraftRoots</span>
           <span className="hidden sm:block w-1 h-1 rounded-full bg-clay" />
           <span className="hidden sm:block eyebrow text-[0.6rem]">India</span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-9">
+        <div className="hidden lg:block">
+          <LocationPicker />
+        </div>
+
+        <div className="hidden md:block flex-1 max-w-sm">
+          <SearchBar />
+        </div>
+
+        <nav className="hidden md:flex items-center gap-7 ml-auto">
           {links.map((l) => (
             <NavLink
               key={l.to}
@@ -61,7 +71,7 @@ export const Header = () => {
         <button
           aria-label="Menu"
           onClick={() => setOpen((o) => !o)}
-          className="md:hidden p-2 -mr-2 text-ink"
+          className="md:hidden p-2 -mr-2 text-ink ml-auto"
         >
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
@@ -70,6 +80,8 @@ export const Header = () => {
       {open && (
         <div className="md:hidden bg-background border-t border-border">
           <nav className="container py-6 flex flex-col gap-5">
+            <LocationPicker />
+            <SearchBar />
             {links.map((l) => (
               <NavLink key={l.to} to={l.to} className="text-lg font-display">
                 {l.label}
