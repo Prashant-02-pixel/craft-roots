@@ -3,8 +3,9 @@ import woodenImg from "@/assets/wooden-toys.jpg";
 import crochetImg from "@/assets/crochet.jpg";
 import potCollection from "@/assets/pottery-collection.jpg";
 import artisan from "@/assets/artisan-portrait.jpg";
+import clayTexture from "@/assets/clay-texture.jpg";
 
-export const images = { potteryImg, woodenImg, crochetImg, potCollection, artisan };
+export const images = { potteryImg, woodenImg, crochetImg, potCollection, artisan, clayTexture };
 
 export type Experience = {
   slug: string;
