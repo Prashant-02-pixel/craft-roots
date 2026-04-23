@@ -44,6 +44,7 @@ export const experiences: Experience[] = [
       "The quiet philosophy of imperfection in craft",
     ],
     slots: ["07:00 — 10:00", "11:00 — 14:00", "15:30 — 18:30"],
+    tags: ["Traditional", "Hands-on", "Cultural"],
   },
   {
     slug: "channapatna-wooden-toys",
@@ -64,6 +65,7 @@ export const experiences: Experience[] = [
       "The history of a craft once protected by kings",
     ],
     slots: ["09:00 — 12:00", "14:00 — 17:00"],
+    tags: ["Traditional", "Hands-on", "Weekend"],
   },
   {
     slug: "crochet-an-heirloom",
@@ -84,6 +86,7 @@ export const experiences: Experience[] = [
       "Finishing your piece — a coaster or small pouch",
     ],
     slots: ["10:00 — 13:00", "15:00 — 18:00"],
+    tags: ["Modern", "Hands-on", "Weekend"],
   },
   {
     slug: "blue-pottery-of-jaipur",
@@ -104,6 +107,7 @@ export const experiences: Experience[] = [
       "Glazing and the kiln tradition",
     ],
     slots: ["08:00 — 11:00", "13:00 — 16:00"],
+    tags: ["Cultural", "Traditional", "Hands-on"],
   },
   {
     slug: "etikoppaka-toys",
@@ -124,6 +128,7 @@ export const experiences: Experience[] = [
       "The ecology behind a 400-year-old craft",
     ],
     slots: ["09:00 — 12:00", "14:30 — 17:30"],
+    tags: ["Traditional", "Cultural"],
   },
   {
     slug: "kashmiri-crochet-shawl",
@@ -144,6 +149,7 @@ export const experiences: Experience[] = [
       "Finishing a small motif of your own",
     ],
     slots: ["10:00 — 13:00", "14:00 — 17:00"],
+    tags: ["Traditional", "Cultural", "Hands-on"],
   },
 ];
 
