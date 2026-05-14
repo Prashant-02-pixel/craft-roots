@@ -117,9 +117,29 @@
     from { opacity: 0; transform: translateY(24px); }
     to { opacity: 1; transform: translateY(0); }
   }
+  .reveal-left { animation: revealLeft 800ms cubic-bezier(.2,.7,.2,1) both; }
+  @keyframes revealLeft {
+    from { opacity: 0; transform: translateX(-24px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  .reveal-delay-1 { animation-delay: 0.1s; }
+  .reveal-delay-2 { animation-delay: 0.25s; }
+  .reveal-delay-3 { animation-delay: 0.4s; }
+  .reveal-delay-4 { animation-delay: 0.55s; }
+  .float-slow { animation: floatSlow 6s ease-in-out infinite; }
+  @keyframes floatSlow {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
   .ken-burns { animation: kenBurns 18s ease-out both; }
   @keyframes kenBurns {
     from { transform: scale(1.08); }
     to { transform: scale(1); }
+  }
+  .card-glass {
+    background: hsl(36 33% 97% / 0.82);
+    backdrop-filter: blur(20px) saturate(1.2);
+    -webkit-backdrop-filter: blur(20px) saturate(1.2);
+    border: 1px solid hsl(36 33% 97% / 0.3);
   }
 }
