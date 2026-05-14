@@ -5,7 +5,7 @@ import { ArrowRight, MapPin, Compass } from "lucide-react";
 import { useLocation as useAppLocation } from "@/context/LocationContext";
 import { SearchBar } from "@/components/craft/SearchBar";
 import { LocationPicker } from "@/components/craft/LocationPicker";
-import { useMemo, useState, useRef, useEffect } from "react";
+import { useMemo } from "react";
 
 const Index = () => {
   const { city, source } = useAppLocation();
