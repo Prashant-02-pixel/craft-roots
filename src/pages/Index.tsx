@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/craft/Layout";
 import { experiences, images, cityCultures } from "@/data/experiences";
-import { ArrowRight, MapPin } from "lucide-react";
+import { ArrowRight, MapPin, Compass } from "lucide-react";
 import { useLocation as useAppLocation } from "@/context/LocationContext";
 import { SearchBar } from "@/components/craft/SearchBar";
 import { LocationPicker } from "@/components/craft/LocationPicker";
@@ -20,29 +20,106 @@ const Index = () => {
 
   return (
     <Layout transparentHeader>
-      {/* HERO */}
-      <section className="relative h-[100svh] min-h-[640px] w-full overflow-hidden">
+      {/* HERO — Split Layout */}
+      <section className="relative h-[100svh] min-h-[700px] w-full overflow-hidden">
         <img
           src={images.potteryImg}
           alt="Hands shaping wet clay on a pottery wheel"
           className="absolute inset-0 w-full h-full object-cover img-warm ken-burns"
         />
-        <div className="absolute inset-0 bg-gradient-veil" />
-        <div className="absolute inset-0 grain opacity-40" />
+        <div className="absolute inset-0 bg-ink/50" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/20 to-ink/30" />
+        <div className="absolute inset-0 grain opacity-30" />
 
-        <div className="relative h-full container flex flex-col justify-end pb-16 md:pb-24">
-          <p className="eyebrow text-sand reveal-up">CraftRoots — Est. in Earth</p>
-          <h1 className="font-display text-background text-[3.2rem] sm:text-7xl md:text-[7.5rem] leading-[0.95] mt-4 max-w-5xl reveal-up">
-            Experience India<br />
-            <em className="font-light">through its</em> artisans.
-          </h1>
-          <div className="flex flex-col gap-8 mt-10 reveal-up">
-            <p className="text-background/85 max-w-md text-base leading-relaxed">
+        <div className="relative h-full container grid lg:grid-cols-2 gap-10 lg:gap-16 items-center pt-20 md:pt-24 pb-12 md:pb-16">
+          {/* LEFT — Storytelling */}
+          <div className="flex flex-col gap-5 md:gap-6 text-left">
+            <p className="eyebrow text-sand/90 reveal-left reveal-delay-1">
+              CraftRoots — Est. in Earth
+            </p>
+            <h1 className="font-display text-background text-4xl sm:text-5xl md:text-6xl lg:text-[4rem] xl:text-[4.8rem] leading-[1.05] reveal-left reveal-delay-2">
+              Experience India<br />
+              <em className="font-light">Through Its</em> Artisans.
+            </h1>
+            <p className="text-background/80 max-w-lg text-base md:text-lg leading-relaxed reveal-left reveal-delay-3">
               Three quiet hours at the wheel, the lathe, the loom — with the
               hands that have kept India's crafts alive for generations.
             </p>
-            <div className="max-w-2xl w-full">
+            <div className="flex flex-wrap gap-3 md:gap-4 mt-1 reveal-left reveal-delay-4">
+              <Link
+                to="/experiences"
+                className="inline-flex items-center gap-2.5 bg-clay text-background px-6 py-3.5 rounded-full text-sm font-medium tracking-wide hover:bg-clay/90 transition-colors shadow-lift"
+              >
+                Explore workshops
+                <ArrowRight size={15} />
+              </Link>
+              <Link
+                to="/story"
+                className="inline-flex items-center gap-2.5 bg-background/15 backdrop-blur-sm text-background border border-background/30 px-6 py-3.5 rounded-full text-sm font-medium tracking-wide hover:bg-background/25 transition-colors"
+              >
+                Our story
+              </Link>
+            </div>
+          </div>
+
+          {/* RIGHT — Discovery Card */}
+          <div className="flex justify-center lg:justify-end w-full reveal-up float-slow">
+            <div className="w-full max-w-[420px] card-glass rounded-2xl p-6 md:p-7 shadow-lift">
+              {/* Card header */}
+              <div className="flex items-center gap-2.5 mb-5">
+                <div className="w-8 h-8 rounded-full bg-clay/10 flex items-center justify-center">
+                  <Compass size={15} className="text-clay" />
+                </div>
+                <div>
+                  <p className="text-ink font-medium text-sm">Discover experiences</p>
+                  <p className="text-ink-whisper text-xs">Handpicked artisan workshops</p>
+                </div>
+              </div>
+
+              {/* Search */}
               <SearchBar variant="hero" />
+
+              {/* Quick cities */}
+              <div className="mt-5">
+                <p className="text-[0.65rem] uppercase tracking-[0.15em] text-ink-whisper mb-2.5">Popular destinations</p>
+                <div className="flex flex-wrap gap-2">
+                  {["Jaipur", "Goa", "Bengaluru", "Delhi"].map((c) => (
+                    <Link
+                      key={c}
+                      to={`/experiences?city=${encodeURIComponent(c)}`}
+                      className="inline-flex items-center gap-1.5 text-xs text-ink-soft bg-sand/60 hover:bg-sand hover:text-clay transition-colors px-3 py-1.5 rounded-full"
+                    >
+                      <MapPin size={10} />
+                      {c}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              {/* Mini featured */}
+              <div className="mt-5 pt-5 border-t border-border/50">
+                <p className="text-[0.65rem] uppercase tracking-[0.15em] text-ink-whisper mb-3">Trending now</p>
+                <div className="flex gap-3">
+                  {featured.slice(0, 2).map((e) => (
+                    <Link
+                      key={e.slug}
+                      to={`/experience/${e.slug}`}
+                      className="group flex-1 min-w-0"
+                    >
+                      <div className="aspect-[4/3] rounded-lg overflow-hidden mb-2">
+                        <img
+                          src={e.image}
+                          alt={e.title}
+                          className="w-full h-full object-cover img-warm transition-transform duration-500 group-hover:scale-110"
+                          loading="lazy"
+                        />
+                      </div>
+                      <p className="text-xs font-medium text-ink truncate group-hover:text-clay transition-colors">{e.title}</p>
+                      <p className="text-[0.7rem] text-ink-whisper">{e.city} · ₹{e.price.toLocaleString("en-IN")}</p>
+                    </Link>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
