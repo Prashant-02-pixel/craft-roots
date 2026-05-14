@@ -1,11 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Layout } from "@/components/craft/Layout";
 import { experiences, images, cityCultures } from "@/data/experiences";
-import { ArrowRight, MapPin } from "lucide-react";
+import { ArrowRight, MapPin, Compass, Search } from "lucide-react";
 import { useLocation as useAppLocation } from "@/context/LocationContext";
 import { SearchBar } from "@/components/craft/SearchBar";
 import { LocationPicker } from "@/components/craft/LocationPicker";
-import { useMemo } from "react";
+import { useMemo, useState, useRef, useEffect } from "react";
 
 const Index = () => {
   const { city, source } = useAppLocation();
