@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
 import { Check, ArrowRight } from "lucide-react";
 import { z } from "zod";
 import { toast } from "sonner";
@@ -14,7 +14,7 @@ export const Footer = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [sent, setSent] = useState(false);
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = (e: FormEvent) => {
     e.preventDefault();
     const parsed = feedbackSchema.safeParse(form);
     if (!parsed.success) {
