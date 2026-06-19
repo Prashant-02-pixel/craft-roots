@@ -6,20 +6,20 @@
 
 @layer base {
   :root {
-    /* CraftRoots earthy palette — HSL */
-    --background: 36 33% 97%;        /* off-white #FAF7F2 */
+    /* CraftRoots pink palette — HSL */
+    --background: 20 25% 97%;        /* warm off-white #FBF8F7 */
     --foreground: 0 0% 18%;           /* charcoal #2E2E2E */
 
-    --clay: 19 53% 51%;               /* terracotta #C56A3D */
-    --clay-foreground: 36 33% 97%;
-    --clay-soft: 19 45% 88%;
+    --clay: 350 55% 58%;              /* dusty rose #D4738A */
+    --clay-foreground: 20 25% 97%;
+    --clay-soft: 350 40% 90%;
 
-    --sand: 33 55% 89%;               /* beige #F5E6D3 */
+    --sand: 10 45% 92%;               /* blush #F5E3DE */
     --sand-foreground: 0 0% 18%;
-    --sand-deep: 33 30% 78%;
+    --sand-deep: 10 30% 78%;
 
-    --moss: 95 14% 49%;               /* muted green #7A8F6B */
-    --moss-foreground: 36 33% 97%;
+    --moss: 330 25% 55%;              /* dusty mauve #A67A8E */
+    --moss-foreground: 20 25% 97%;
 
     --ink: 0 0% 18%;
     --ink-soft: 0 0% 35%;
@@ -28,48 +28,48 @@
     --card: 0 0% 100%;
     --card-foreground: 0 0% 18%;
 
-    --popover: 36 33% 97%;
+    --popover: 20 25% 97%;
     --popover-foreground: 0 0% 18%;
 
-    --primary: 19 53% 51%;
-    --primary-foreground: 36 33% 97%;
+    --primary: 350 55% 58%;
+    --primary-foreground: 20 25% 97%;
 
-    --secondary: 33 55% 89%;
+    --secondary: 10 45% 92%;
     --secondary-foreground: 0 0% 18%;
 
-    --muted: 33 30% 93%;
+    --muted: 10 30% 93%;
     --muted-foreground: 0 0% 40%;
 
-    --accent: 95 14% 49%;
-    --accent-foreground: 36 33% 97%;
+    --accent: 330 25% 55%;
+    --accent-foreground: 20 25% 97%;
 
     --destructive: 0 65% 45%;
-    --destructive-foreground: 36 33% 97%;
+    --destructive-foreground: 20 25% 97%;
 
-    --border: 33 25% 85%;
-    --input: 33 25% 85%;
-    --ring: 19 53% 51%;
+    --border: 10 25% 85%;
+    --input: 10 25% 85%;
+    --ring: 350 55% 58%;
 
     --radius: 0.25rem;
 
-    /* Shadows — soft, like clay dust */
-    --shadow-soft: 0 4px 24px -8px hsl(19 40% 30% / 0.12);
-    --shadow-lift: 0 12px 40px -12px hsl(19 40% 25% / 0.18);
-    --shadow-edge: 0 1px 0 hsl(33 25% 80%);
+    /* Shadows — soft, like rose petals */
+    --shadow-soft: 0 4px 24px -8px hsl(350 40% 30% / 0.12);
+    --shadow-lift: 0 12px 40px -12px hsl(350 40% 25% / 0.18);
+    --shadow-edge: 0 1px 0 hsl(10 25% 80%);
 
     /* Gradients */
-    --gradient-warm: linear-gradient(180deg, hsl(36 33% 97%) 0%, hsl(33 45% 92%) 100%);
-    --gradient-clay: linear-gradient(135deg, hsl(19 53% 51%) 0%, hsl(15 45% 42%) 100%);
+    --gradient-warm: linear-gradient(180deg, hsl(20 25% 97%) 0%, hsl(10 40% 92%) 100%);
+    --gradient-clay: linear-gradient(135deg, hsl(350 55% 58%) 0%, hsl(345 50% 45%) 100%);
     --gradient-veil: linear-gradient(180deg, transparent 0%, hsl(0 0% 10% / 0.65) 100%);
 
-    --sidebar-background: 36 33% 97%;
+    --sidebar-background: 20 25% 97%;
     --sidebar-foreground: 0 0% 18%;
-    --sidebar-primary: 19 53% 51%;
-    --sidebar-primary-foreground: 36 33% 97%;
-    --sidebar-accent: 33 55% 89%;
+    --sidebar-primary: 350 55% 58%;
+    --sidebar-primary-foreground: 20 25% 97%;
+    --sidebar-accent: 10 45% 92%;
     --sidebar-accent-foreground: 0 0% 18%;
-    --sidebar-border: 33 25% 85%;
-    --sidebar-ring: 19 53% 51%;
+    --sidebar-border: 10 25% 85%;
+    --sidebar-ring: 350 55% 58%;
   }
 }
 
@@ -104,8 +104,8 @@
   }
   .grain {
     background-image:
-      radial-gradient(hsl(19 40% 30% / 0.04) 1px, transparent 1px),
-      radial-gradient(hsl(19 40% 30% / 0.03) 1px, transparent 1px);
+      radial-gradient(hsl(350 40% 30% / 0.04) 1px, transparent 1px),
+      radial-gradient(hsl(350 40% 30% / 0.03) 1px, transparent 1px);
     background-size: 4px 4px, 7px 7px;
     background-position: 0 0, 2px 3px;
   }
@@ -137,9 +137,9 @@
     to { transform: scale(1); }
   }
   .card-glass {
-    background: hsl(36 33% 97% / 0.82);
+    background: hsl(20 25% 97% / 0.82);
     backdrop-filter: blur(20px) saturate(1.2);
     -webkit-backdrop-filter: blur(20px) saturate(1.2);
-    border: 1px solid hsl(36 33% 97% / 0.3);
+    border: 1px solid hsl(20 25% 97% / 0.3);
   }
 }
