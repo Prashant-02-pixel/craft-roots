@@ -1,11 +1,41 @@
-import potteryImg from "@/assets/hero-pottery.jpg";
-import woodenImg from "@/assets/wooden-toys.jpg";
-import crochetImg from "@/assets/crochet.jpg";
+import potteryImg from "@/assets/craft-pottery.jpg";
+import woodenImg from "@/assets/craft-wooden.jpg";
+import crochetImg from "@/assets/craft-crochet.jpg";
+import distilleryImg from "@/assets/craft-distillery.jpg";
+import textileImg from "@/assets/craft-textile.jpg";
+import handicraftImg from "@/assets/craft-handicraft.jpg";
 import potCollection from "@/assets/pottery-collection.jpg";
-import artisan from "@/assets/artisan-portrait.jpg";
 import clayTexture from "@/assets/clay-texture.jpg";
+import artisanRamlal from "@/assets/artisan-ramlal.jpg";
+import artisanManjunath from "@/assets/artisan-manjunath.jpg";
+import artisanAnya from "@/assets/artisan-anya.jpg";
+import artisanIqbal from "@/assets/artisan-iqbal.jpg";
+import artisanMary from "@/assets/artisan-mary.jpg";
+import artisanBamboo from "@/assets/artisan-bamboo.jpg";
+import storyTravelers from "@/assets/story-travelers.jpg";
+import storyWorkshop from "@/assets/story-workshop.jpg";
+import loginExperience from "@/assets/login-experience.jpg";
 
-export const images = { potteryImg, woodenImg, crochetImg, potCollection, artisan, clayTexture };
+export const images = {
+  potteryImg,
+  woodenImg,
+  crochetImg,
+  distilleryImg,
+  textileImg,
+  handicraftImg,
+  potCollection,
+  clayTexture,
+  artisan: artisanRamlal,
+  artisanRamlal,
+  artisanManjunath,
+  artisanAnya,
+  artisanIqbal,
+  artisanMary,
+  artisanBamboo,
+  storyTravelers,
+  storyWorkshop,
+  loginExperience,
+};
 
 export type Experience = {
   slug: string;
@@ -15,6 +45,7 @@ export type Experience = {
   duration: string;
   price: number;
   image: string;
+  artisanImage?: string;
   artisan: string;
   artisanYears: number;
   excerpt: string;
