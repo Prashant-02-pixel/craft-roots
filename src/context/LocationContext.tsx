@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState, ReactNode, useCallback } from "react";
+import { createContext, useContext, useEffect, useState, ReactNode, useCallback, type Context } from "react";
 import { cities as knownCities } from "@/data/experiences";
 
 type LocationState = {
@@ -22,7 +22,15 @@ type Ctx = {
 const STORAGE_KEY = "craftroots:location";
 const DEFAULT_CITY = "Jaipur";
 
-const LocationCtx = createContext<Ctx | null>(null);
+const LOCATION_CONTEXT_KEY = Symbol.for("craftroots.location-context");
+type GlobalWithLocationContext = typeof globalThis & {
+  [LOCATION_CONTEXT_KEY]?: Context<Ctx | null>;
+};
+
+const globalWithLocationContext = globalThis as GlobalWithLocationContext;
+const LocationCtx =
+  globalWithLocationContext[LOCATION_CONTEXT_KEY] ??
+  (globalWithLocationContext[LOCATION_CONTEXT_KEY] = createContext<Ctx | null>(null));
 
 // A loose mapping of geo → nearest supported city
 const fallbackByRegion = (lat: number, lon: number): string => {
