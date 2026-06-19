@@ -24,7 +24,7 @@ export const LocationPicker = ({ compact = false }: { compact?: boolean }) => {
         onClick={() => setOpen((o) => !o)}
         className={`flex items-center gap-2 ${compact ? "text-xs" : "text-sm"} text-ink-soft hover:text-ink transition-colors`}
       >
-        <MapPin size={14} className="text-clay" />
+        <MapPin size={14} className="text-ink-soft" />
         <span className="text-ink">{city}</span>
         <ChevronDown size={12} className={`transition-transform ${open ? "rotate-180" : ""}`} />
       </button>
@@ -43,7 +43,7 @@ export const LocationPicker = ({ compact = false }: { compact?: boolean }) => {
           <button
             onClick={() => { void requestAuto(); setOpen(false); }}
             disabled={detecting}
-            className="w-full flex items-center gap-2 px-4 py-3 text-sm hover:bg-sand/60 border-b border-border text-clay disabled:opacity-60"
+            className="w-full flex items-center gap-2 px-4 py-3 text-sm hover:bg-sand/60 border-b border-border text-ink disabled:opacity-60"
           >
             <Navigation size={13} />
             {detecting ? "Detecting…" : "Use my current location"}
@@ -56,7 +56,7 @@ export const LocationPicker = ({ compact = false }: { compact?: boolean }) => {
                   className="w-full flex items-center justify-between px-4 py-2.5 text-sm text-ink-soft hover:bg-sand/60 hover:text-ink"
                 >
                   <span>{c}</span>
-                  {c === city && <Check size={13} className="text-clay" />}
+                  {c === city && <Check size={13} className="text-ink" />}
                 </button>
               </li>
             ))}
