@@ -34,7 +34,7 @@ export const Header = () => {
       <div className="container flex items-center gap-6 h-16 md:h-20">
         <Link to="/" className="flex items-baseline gap-2 group shrink-0">
           <span className="font-display text-2xl md:text-[1.6rem] tracking-tight">CraftRoots</span>
-          <span className="hidden sm:block w-1 h-1 rounded-full bg-clay" />
+          <span className="hidden sm:block w-1 h-1 rounded-full bg-ink-soft" />
           <span className="hidden sm:block eyebrow text-[0.6rem]">India</span>
         </Link>
 
@@ -53,7 +53,7 @@ export const Header = () => {
               to={l.to}
               className={({ isActive }) =>
                 `text-sm tracking-wide transition-colors ${
-                  isActive ? "text-clay" : "text-ink-soft hover:text-ink"
+                  isActive ? "text-ink" : "text-ink-soft hover:text-ink"
                 }`
               }
             >
@@ -62,7 +62,7 @@ export const Header = () => {
           ))}
           <Link
             to="/login"
-            className="text-sm bg-ink text-background px-5 py-2.5 hover:bg-clay transition-colors duration-500"
+            className="text-sm bg-ink text-background px-5 py-2.5 hover:bg-ink-soft transition-colors duration-500"
           >
             Sign in
           </Link>
