@@ -13,7 +13,11 @@ const Story = () => (
     </section>
 
     <section className="w-full aspect-[16/8] overflow-hidden">
-      <img src={images.clayTexture} alt="" className="w-full h-full object-cover img-warm" />
+      <img
+        src={images.storyTravelers}
+        alt="A traveler learning pottery from a master artisan"
+        className="w-full h-full object-cover img-warm"
+      />
     </section>
 
     <section className="container py-24 grid md:grid-cols-12 gap-12">
@@ -23,6 +27,11 @@ const Story = () => (
         <p>That feeling is what CraftRoots is built on. We believe travel is most meaningful when it slows down — when it sits beside someone, watches their hands, and listens.</p>
         <p>Today we work with over 80 master artisans across India. We pay them fairly, schedule small groups, and never ask them to be anything other than themselves. Most of them have practiced their craft for thirty, forty, fifty years. We are simply the door.</p>
       </div>
+    </section>
+
+    <section className="container pb-24 grid md:grid-cols-12 gap-6 md:gap-8">
+      <img src={images.storyWorkshop} alt="Travelers seated with an artisan in a sunlit courtyard" className="md:col-span-7 w-full aspect-[5/4] object-cover img-warm" loading="lazy" />
+      <img src={images.artisanAnya} alt="A modern artisan beside copper stills in Goa" className="md:col-span-5 w-full aspect-[5/4] object-cover img-warm md:mt-16" loading="lazy" />
     </section>
 
     <section className="bg-sand py-24">
