@@ -1,12 +1,13 @@
 import { Layout } from "@/components/craft/Layout";
-import { experiences, images } from "@/data/experiences";
+import { experiences, testimonialsByCategory } from "@/data/experiences";
 import { Link, useParams, Navigate } from "react-router-dom";
-import { ArrowRight, Clock, MapPin, Users } from "lucide-react";
+import { ArrowRight, Clock, MapPin, Users, Star } from "lucide-react";
 
 const ExperienceDetail = () => {
   const { slug } = useParams();
   const exp = experiences.find((e) => e.slug === slug);
   if (!exp) return <Navigate to="/experiences" replace />;
+  const reviews = testimonialsByCategory[exp.category] ?? [];
 
   return (
     <Layout transparentHeader>
@@ -30,7 +31,7 @@ const ExperienceDetail = () => {
       <section className="bg-sand">
         <div className="container py-24 md:py-32 grid md:grid-cols-12 gap-12">
           <div className="md:col-span-5">
-            <img src={images.artisan} alt={exp.artisan} className="w-full aspect-[3/4] object-cover img-warm" loading="lazy" />
+            <img src={exp.artisanImage ?? exp.image} alt={exp.artisan} className="w-full aspect-[3/4] object-cover img-warm" loading="lazy" />
           </div>
           <div className="md:col-span-6 md:col-start-7 flex flex-col justify-center">
             <p className="eyebrow mb-4">The Artisan</p>
@@ -88,6 +89,36 @@ const ExperienceDetail = () => {
           </div>
         </div>
       </section>
+
+      {/* TESTIMONIALS */}
+      {reviews.length > 0 && (
+        <section className="bg-sand/60">
+          <div className="container py-24 md:py-32">
+            <div className="grid md:grid-cols-12 gap-10 mb-14">
+              <p className="eyebrow md:col-span-3">Travellers' Letters</p>
+              <h2 className="md:col-span-8 font-display text-4xl md:text-6xl leading-[1.05]">
+                Quiet notes from those <em className="font-light">who sat at the bench.</em>
+              </h2>
+            </div>
+            <div className="grid md:grid-cols-3 gap-6 md:gap-8">
+              {reviews.map((r, i) => (
+                <figure key={r.name} className={`bg-background p-7 md:p-8 shadow-[var(--shadow-soft)] flex flex-col gap-5 ${i === 1 ? "md:mt-10" : ""}`}>
+                  <div className="flex gap-1 text-clay">
+                    {Array.from({ length: 5 }).map((_, s) => (
+                      <Star key={s} size={14} fill={s < r.rating ? "currentColor" : "none"} strokeWidth={1.5} />
+                    ))}
+                  </div>
+                  <blockquote className="font-display text-2xl leading-snug text-ink">"{r.review}"</blockquote>
+                  <figcaption className="mt-auto pt-4 border-t border-border">
+                    <p className="text-sm font-medium text-ink">{r.name}</p>
+                    <p className="text-xs text-ink-soft tracking-wide">{r.city}</p>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
     </Layout>
   );
 };

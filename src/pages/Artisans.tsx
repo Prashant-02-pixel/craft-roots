@@ -1,5 +1,5 @@
 import { Layout } from "@/components/craft/Layout";
-import { experiences, images } from "@/data/experiences";
+import { experiences } from "@/data/experiences";
 import { Link } from "react-router-dom";
 
 const unique = Array.from(new Map(experiences.map((e) => [e.artisan, e])).values());
@@ -18,7 +18,7 @@ const Artisans = () => (
         {unique.map((e, i) => (
           <Link to={`/experience/${e.slug}`} key={e.artisan} className={`group ${i % 2 === 1 ? "md:mt-24" : ""}`}>
             <div className="overflow-hidden aspect-[4/5] mb-6">
-              <img src={i % 2 === 0 ? images.artisan : e.image} alt={e.artisan} className="w-full h-full object-cover img-warm transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+              <img src={e.artisanImage ?? e.image} alt={e.artisan} className="w-full h-full object-cover img-warm transition-transform duration-700 group-hover:scale-105" loading="lazy" />
             </div>
             <p className="eyebrow mb-2">{e.category} · {e.city}</p>
             <h3 className="font-display text-3xl md:text-4xl group-hover:text-clay transition-colors">{e.artisan}</h3>
