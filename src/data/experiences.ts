@@ -305,7 +305,80 @@ export const experiencesExtra: Experience[] = [
 
 experiences.push(...experiencesExtra);
 
-export const cities = ["Jaipur", "Bengaluru", "Pondicherry", "Visakhapatnam", "Srinagar", "Udaipur", "Goa", "Delhi"];
+export const handicraftExperiences: Experience[] = [
+  {
+    slug: "assam-bamboo-craft",
+    title: "Bamboo Weaving by the Brahmaputra",
+    category: "Handicrafts",
+    city: "Guwahati",
+    duration: "3 hours",
+    price: 1600,
+    image: handicraftImg,
+    artisanImage: artisanBamboo,
+    artisan: "Dipak Boro",
+    artisanYears: 33,
+    excerpt: "Split, soak, and weave bamboo into a small basket along the riverbank where the craft has lived for centuries.",
+    story: "Dipak's village has woven bamboo since before the road came. He weaves to the rhythm of the river — slowly, and without explanation.",
+    learn: ["Splitting and treating raw bamboo", "Reading the simple over-under weave", "Finishing edges with cane", "The bamboo ecology of the Northeast"],
+    slots: ["09:00 — 12:00", "14:00 — 17:00"],
+    tags: ["Traditional", "Hands-on", "Cultural"],
+  },
+  {
+    slug: "molela-terracotta",
+    title: "Molela Terracotta Plaques",
+    category: "Handicrafts",
+    city: "Udaipur",
+    duration: "3 hours",
+    price: 1800,
+    image: clayTexture,
+    artisanImage: artisanRamlal,
+    artisan: "Mohanlal Kumhar",
+    artisanYears: 41,
+    excerpt: "Shape a votive terracotta plaque the way Molela's families have for eight hundred years.",
+    story: "Mohanlal still digs his clay from the same pond his great-grandfather did. He fires under the open sky.",
+    learn: ["Wedging and slab-rolling local clay", "Modelling a small relief figure", "Open-air firing traditions", "The Molela votive tradition"],
+    slots: ["08:00 — 11:00", "15:00 — 18:00"],
+    tags: ["Traditional", "Cultural", "Hands-on"],
+  },
+  {
+    slug: "moradabad-brass",
+    title: "Brass Engraving in Moradabad",
+    category: "Handicrafts",
+    city: "Delhi",
+    duration: "3 hours",
+    price: 2100,
+    image: handicraftImg,
+    artisanImage: artisanIqbal,
+    artisan: "Salim Ansari",
+    artisanYears: 38,
+    excerpt: "In a small brass studio, learn the chiselled vine-work that made Moradabad famous from London to Tokyo.",
+    story: "Salim's family has engraved brass for five generations. His chisels are older than he is.",
+    learn: ["Reading the floral repeats", "Holding and tapping the chisel", "Polishing and patinating brass", "The export history of the craft"],
+    slots: ["10:00 — 13:00", "14:30 — 17:30"],
+    tags: ["Traditional", "Hands-on", "Cultural"],
+  },
+  {
+    slug: "andhra-leather-puppetry",
+    title: "Tholu Bommalata Leather Puppets",
+    category: "Handicrafts",
+    city: "Visakhapatnam",
+    duration: "3 hours",
+    price: 1900,
+    image: handicraftImg,
+    artisanImage: artisanBamboo,
+    artisan: "Chidambara Rao",
+    artisanYears: 47,
+    excerpt: "Paint a translucent leather puppet from the Andhra shadow-theatre tradition — and watch it dance against a lamp.",
+    story: "Chidambara still performs at village temples. The puppets, he says, only come alive once the lamp is lit.",
+    learn: ["Cutting and curing goat-leather", "Painting natural pigments", "Articulating limbs with bamboo rods", "The Tholu Bommalata stories"],
+    slots: ["10:00 — 13:00", "16:00 — 19:00"],
+    tags: ["Traditional", "Cultural"],
+  },
+];
+
+experiences.push(...handicraftExperiences);
+
+export const cities = ["Jaipur", "Bengaluru", "Pondicherry", "Visakhapatnam", "Srinagar", "Udaipur", "Goa", "Delhi", "Guwahati"];
 export const categories = ["Pottery", "Wooden Toys", "Crochet", "Distillery", "Textile", "Handicrafts"] as const;
 
 export type CityCulture = {
@@ -317,9 +390,50 @@ export type CityCulture = {
 
 export const cityCultures: CityCulture[] = [
   { city: "Jaipur", tagline: "The pink city of clay & cobalt", signature: ["Pottery", "Blue Pottery", "Wooden Toys"], image: potteryImg },
-  { city: "Goa", tagline: "Coastal stills & craft brews", signature: ["Feni Distillery", "Craft Beer"], image: potCollection },
-  { city: "Delhi", tagline: "Lanes of textile & handicraft", signature: ["Handblock Print", "Crochet"], image: crochetImg },
+  { city: "Goa", tagline: "Coastal stills & craft brews", signature: ["Feni Distillery", "Craft Beer"], image: distilleryImg },
+  { city: "Delhi", tagline: "Lanes of textile & handicraft", signature: ["Handblock Print", "Brass Craft"], image: textileImg },
   { city: "Bengaluru", tagline: "Lacquer & lathe traditions", signature: ["Channapatna Toys"], image: woodenImg },
-  { city: "Srinagar", tagline: "Walnut wood & chinar wool", signature: ["Kashmiri Crochet"], image: crochetImg },
+  { city: "Srinagar", tagline: "Walnut wood & chinar wool", signature: ["Kashmiri Crochet"], image: artisanMary },
   { city: "Pondicherry", tagline: "Slow afternoons by the sea", signature: ["Crochet"], image: crochetImg },
+  { city: "Guwahati", tagline: "Bamboo, river, & green hills", signature: ["Bamboo Craft"], image: handicraftImg },
 ];
+
+export type Testimonial = {
+  name: string;
+  city: string;
+  rating: number;
+  review: string;
+};
+
+export const testimonialsByCategory: Record<Experience["category"], Testimonial[]> = {
+  Pottery: [
+    { name: "Aanya Sharma", city: "Mumbai", rating: 5, review: "Three hours flew by. I left with clay under my fingernails and a small pot I still keep on my desk." },
+    { name: "Daniel Whitfield", city: "London", rating: 5, review: "The most grounded afternoon of my India trip. Ramlal teaches without saying much — and you learn anyway." },
+    { name: "Priya Menon", city: "Bangalore", rating: 4, review: "A meditative, beautiful experience. Worth every rupee for the story alone." },
+  ],
+  "Wooden Toys": [
+    { name: "Karthik Iyer", city: "Chennai", rating: 5, review: "Manjunath let me try the lathe. My toy is wobbly and I love it. Took a piece of Channapatna home." },
+    { name: "Sofia Romano", city: "Milan", rating: 5, review: "I had no idea this craft existed. The lacquer colours are unreal. Highly recommend." },
+    { name: "Ravi Sundaram", city: "Hyderabad", rating: 4, review: "Wonderful for families. My kids still talk about painting their wooden bird." },
+  ],
+  Crochet: [
+    { name: "Lakshmi Pillai", city: "Kochi", rating: 5, review: "Slow afternoon, warm tea, soft yarn. I made a coaster and a friend." },
+    { name: "Emma Larsson", city: "Stockholm", rating: 5, review: "Sister Mary's window seat is the most peaceful place I sat in all of India." },
+    { name: "Tara Kapoor", city: "Delhi", rating: 4, review: "Lovely teacher, honest pace. I picked the craft back up after years." },
+  ],
+  Distillery: [
+    { name: "Marco Alves", city: "Lisbon", rating: 5, review: "Tasted feni straight from the still. The Indo-Portuguese story made the whole afternoon." },
+    { name: "Nikhil Rao", city: "Pune", rating: 4, review: "Anya is brilliant — half scientist, half storyteller. Bottled my own beer." },
+    { name: "Hannah Chen", city: "Singapore", rating: 5, review: "Easily the most unexpected workshop I've done. The copper stills alone are worth it." },
+  ],
+  Textile: [
+    { name: "Meera Joshi", city: "Ahmedabad", rating: 5, review: "Carved my own block and printed a scarf I'll keep forever. Iqbal is the real deal." },
+    { name: "James Hartley", city: "Brisbane", rating: 5, review: "The smell of indigo, the rhythm of the printing — everything about it was perfect." },
+    { name: "Sneha Reddy", city: "Hyderabad", rating: 4, review: "Beautifully run. I now look at fabric differently." },
+  ],
+  Handicrafts: [
+    { name: "Riya Saikia", city: "Guwahati", rating: 5, review: "Dipak's bamboo basket workshop felt like being adopted by a village for an afternoon." },
+    { name: "Lucas Müller", city: "Berlin", rating: 5, review: "Engraving brass with Salim was the highlight of my Delhi week. Real craft, no theatrics." },
+    { name: "Ananya Bose", city: "Kolkata", rating: 4, review: "A side of India I'd never seen. Warm, slow, and beautifully taught." },
+  ],
+};
