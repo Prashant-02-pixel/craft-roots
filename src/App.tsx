@@ -14,8 +14,8 @@ import Login from "./pages/Login";
 import WelcomeLocation from "./pages/WelcomeLocation";
 import ArtisanPortal from "./pages/ArtisanPortal";
 import NotFound from "./pages/NotFound";
-import { LocationProvider } from "./context/LocationContext";
-import { LocationPrompt } from "./components/craft/LocationPrompt";
+import { LocationProvider } from "@/context/LocationContext";
+import { LocationPrompt } from "@/components/craft/LocationPrompt";
 
 const queryClient = new QueryClient();
 
