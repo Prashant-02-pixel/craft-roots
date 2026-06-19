@@ -95,8 +95,8 @@ const Login = () => {
       {/* Storytelling panel */}
       <aside className="relative hidden md:block">
         <img
-          src={images.artisan}
-          alt="Artisan at work"
+          src={images.loginExperience}
+          alt="A traveler shares a quiet moment with a master artisan in his workshop"
           className="absolute inset-0 w-full h-full object-cover img-warm ken-burns"
         />
         <div className="absolute inset-0 bg-gradient-veil" />
